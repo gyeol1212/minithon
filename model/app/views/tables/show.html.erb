@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @table.title %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @table.price %>
+</p>
+
+<p>
+  <strong>Etc:</strong>
+  <%= @table.etc %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @table.post %>
+</p>
+
+<%= link_to 'Edit', edit_table_path(@table) %> |
+<%= link_to 'Back', tables_path %>

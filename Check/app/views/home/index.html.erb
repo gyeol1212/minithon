@@ -1,0 +1,13 @@
+<h1>Home#index</h1>
+<form action="home/create" method="post">
+    <input type="string" name="gets">
+    <input type="submit" value="입력">
+</form>
+
+<a href="home/mypage">보러가기</a> <br>
+<% @checks.each do |x| %>
+이름 <%= x.name%> <br>
+<a href="home/edit/<%=x.id%>">수정하기</a> <br>
+<a href="home/destroy/<%=x.id%>">삭제하기</a><br>
+-----------------------<br>
+<% end %>

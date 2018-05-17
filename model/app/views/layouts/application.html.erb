@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Model</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand main-title">NEXT X 멋쟁이사자처럼</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">처음으로</a>
+            <a class="nav-link" href="/posts">myPage</a>
+            
+
+            <% if user_signed_in? %>
+         <%= link_to '로그아웃', destroy_user_session_path, method: :delete, class: "nav-link" %>
+       <% else %>
+         <%= link_to '로그인', new_user_session_path, class: "nav-link" %>
+        <%= link_to '회원가입', new_user_registration_path, class: "nav-link" %>
+   
+       <% end %>
+          </nav>
+       
+      </header>
+    </div>  
+  <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
