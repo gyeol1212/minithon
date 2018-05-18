@@ -1,11 +1,12 @@
 class HomeController < ApplicationController
   def index
     @checks = Check.all
+    @checks_sort = @checks.sort
   end
 
   def mypage
     @checks =Check.all
-    @checks_sort = @checks.sort
+    
 
 
   end

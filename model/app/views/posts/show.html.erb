@@ -5,29 +5,62 @@
   <%= @post.title %>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
-
-<%@post.comments.each do |comment|%>
-
-  <%=comment.content%>
-  &nbsp &nbsp  
-  <%= link_to '삭제', post_comment_path(@post.id,comment.id), method: 'delete'%><br>
-<% end%>
-
 <%=form_for Comment.new, url:post_comments_path(@post.id) do |f|%>
   <%=f.label "댓글"%>
   
   <%=f.text_field :content, size: 60;%>  
   <%=f.submit '작성'%>
 <% end %>
+
+<table class="table" id="table">
+  <tr>
+    <th>내용</th>
+    <th>번호</th>
+    <th>삭제</th>
+  </th>
+  <% a = 0 %>
+  <%@post.comments.each do |comment|%>
+    <tr>
+      <td>
+        <%=comment.content%>
+        &nbsp &nbsp 
+      </td>
+      <td>
+        <%=comment.id%>
+        <% a = a + comment.id%>
+      </td>
+      <td>
+        <%= link_to '삭제', post_comment_path(@post.id,comment.id), method: 'delete'%>
+      </td>
+    </tr>
+    
+  <% end%>
+  <tr>
+      <th>내용</th>
+      <th>
+        <%= a %>
+      </th>
+    </tr>
+</table>
+
+<%= raw(MagickTitle.say("dskdfsdlkf\nsdfklsdfnl").to_html) %>
+
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">몇명이니</label>
+    <input type="integer" class="form-control" name="money" id="exampleInputEmail1" >
+    
+</form>
+
+<%# <% b = a.to_i/params[:money].to_i %> %>
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">인당 얼마</label>
+    <input type="integer" class="form-control" name="dlsekd" value="<%= a%>" id="exampleInputEmail1" >
+    
+</form>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

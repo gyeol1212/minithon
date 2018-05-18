@@ -5,9 +5,34 @@
 </form>
 
 <a href="home/mypage">보러가기</a> <br>
+
+안 낸사람
+
+<% @checks_sort.each do |x| %>
+    <% if x.money != 1 %>
+        <form action="/home/ok/<%=x.id%>" mehtod="post">
+            <%= x.name %>
+            <input type="submit" value="확인">
+        </form>
+    <% end %>
+<% end %>
+<br>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br>
+
+낸사람
+<% @checks.each do |x| %>
+    <% if x.money == 1 %>
+        <form action="/home/no/<%=x.id%>" mehtod="post">
+            <%= x.name %>
+            <input type="submit" value="확인">
+        </form>
+    <% end %>
+<% end %>
+
+
 <% @checks.each do |x| %>
 이름 <%= x.name%> <br>
 <a href="home/edit/<%=x.id%>">수정하기</a> <br>
 <a href="home/destroy/<%=x.id%>">삭제하기</a><br>
 -----------------------<br>
 <% end %>
+ 
